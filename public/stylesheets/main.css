@@ -1,0 +1,17 @@
+body {
+  margin: 0
+}
+
+body > header {
+  background-color: #EEE;
+  box-shadow: 0 1px 3px #AAA;
+  padding: 3px;
+}
+
+body > header form {
+  display: inline;
+}
+
+body > article {
+  padding: 1em;
+}

@@ -1,0 +1,30 @@
+@(content: Html)(implicit user: Option[User])
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Composite UI without boilerplate with Play 2</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+  </head>
+  <body>
+    <header>
+      <a href="@routes.Application.index()">Composite UI without boilerplate with Play 2</a> |
+      @user match {
+        case Some(user) => {
+          (@user.name) @helper.form(routes.Users.logout()) { <button>Sign out</button> }
+        }
+        case None => {
+          @helper.form(routes.Users.login()) {
+            <input type="text" name="name" placeholder="Your name" /><button>Sign in</button>
+          }
+        }
+      }
+    </header>
+
+    <article>
+      @content
+    </article>
+  </body>
+</html>
